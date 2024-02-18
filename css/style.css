@@ -125,6 +125,7 @@
         transform-origin: 0% 0%;
         transition: .5s;
         opacity: 0;
+        z-index: 1;
     }
 
     .navbar .nav-item:hover .dropdown-menu {
@@ -132,6 +133,7 @@
         visibility: visible;
         transition: .5s;
         opacity: 1;
+        z-index: 1;
     }
 }
 
