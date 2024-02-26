@@ -136,6 +136,45 @@
         z-index: 1;
     }
 }
+ /* Custom CSS for nested dropdown */
+ .nested-dropdown {
+    position: static !important;
+}
+
+.nested-dropdown:hover .nested-dropdown-menu {
+    display: block;
+}
+
+.nested-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 150px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ 
+
+@media (max-width: 991.98px) {
+    .dropdown-menu {
+        position: static !important;
+    }
+
+    .nested-dropdown-menu {
+        position: relative;
+        top: 10;
+        left: auto;
+        width: auto;
+        min-width: 0;
+        box-shadow: none;
+        border: none;
+    }
+}
 
 
 /*** Header ***/
@@ -448,3 +487,4 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
