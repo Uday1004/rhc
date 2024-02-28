@@ -62,22 +62,65 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="/index.html" class="nav-item nav-link ">Home</a>
-                    <a href="about.html" class="nav-item nav-link" >About</a>
                     <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Services</a>
+                        <a href="" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">About</a>
                         <div class="dropdown-menu m-0" style="background-color:#001d23; ">
-                            <a href="PulmonaryCare.html" class="dropdown-item ">Pulmonary </a>
-                            <a href="SleepmedicineCare.html" class="dropdown-item ">Sleep Medicine</a>
-                            <a href="CriticalCare.html" class="dropdown-item ">Critical Care</a>
+                            <a href="/About/Solutions.html" class="dropdown-item "> RHC Solutions </a>
+                            <a href="/About/ourmission.html" class="dropdown-item ">Our Mission</a>
+                            <a href="/About/ourvision.html" class="dropdown-item ">Our Vision</a>
                             
                         </div>
                     </div>
-                    <a href="team.html" class="nav-item nav-link">Team</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Services</a>
+                        <div class="dropdown-menu m-0" style="background-color:#001d23;">
+                            <div class="dropdown-item nested-dropdown " data-bs-target="dropdown">
+                                Tele-Services <span><i class="fa fa-caret-down"></i></span>
+                                <div class="nested-dropdown-menu bg-dark" style="border: 1px solid #FF6F0F;">
+                                    <!-- Nested dropdown content (cards) -->
+                                    <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
+                                        Tele ICU
+                                    </a>
+                                    <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
+                                        Tele Hospitalist/Nocturnist
+                                    </a>
+                                    <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
+                                        Tele Neurology
+                                    </a>
+                                    <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
+                                        Tele Psychiatry
+                                    </a>
+                                    <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
+                                        Virtual Nurse Practitioner
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="dropdown-item nested-dropdown " data-bs-target="dropdown">
+                                In-Person service <span><i class="fa fa-caret-down"></i></span>
+                                <div class="nested-dropdown-menu bg-dark" style="border: 1px solid #FF6F0F;">
+                                    <!-- Nested dropdown content (cards) -->
+                                    <a href="/Services/in-person/PulmonaryCare.html" class="dropdown-item2">
+                                        pulmonary care
+                                    </a>
+                                    <a href="/Services/in-person/SleepmedicineCare.html" class="dropdown-item2">
+                                        Sleep-Medicine care
+                                    </a>
+                                    <a href="/Services/in-person/CriticalCare.html" class="dropdown-item2">
+                                        Critical care
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <a href="" class="nav-item nav-link">Career</a>
+                    <a href="" class="nav-item nav-link">Technology</a>
                     <a href="contact.html" class="nav-item nav-link">Inquiry</a>
+                    
                     
                 </div>
                 <div class="d-none d-lg-flex ms-2">
-                    <a class="btn btn-outline-primary py-2 px-3" href="DrService.html">
+                    <a class="btn btn-outline-primary py-2 px-3" href="/Services/DrService.html">
                         Service Request
                          
                     </a>
@@ -122,7 +165,7 @@
                                 <p class="lead fw-normal text-dark-50 mb-4">Our team of specialists provides personalized treatment plans tailored to your specific needs, whether you're struggling with insomnia, sleep apnea, narcolepsy, or other sleep-related issues. From lifestyle modifications to advanced therapies such as CPAP (Continuous Positive Airway Pressure) and medication management, we strive to help you achieve restful, rejuvenating sleep. With a compassionate and holistic approach, we aim to enhance your sleep quality and restore vitality to your life. Trust us for expert care and support on your journey to better sleep health..</p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Know More</a>
-                                    <a class="btn btn-primary me-sm-3 btn-lg px-4" href="DrService.html">Service Request</a>
+                                    <a class="btn btn-primary me-sm-3 btn-lg px-4" href="/Services/DrService.html">Service Request</a>
                                 </div>
                             </div>
                         </div>
@@ -245,6 +288,44 @@
 
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
+    <script>
+        // JavaScript code to toggle nested dropdown on non-desktop devices
+        document.addEventListener("DOMContentLoaded", function () {
+   var isDesktop = window.matchMedia("(min-width: 992px)").matches;
+
+   if (!isDesktop) {
+       var nestedDropdowns = document.querySelectorAll(".nested-dropdown");
+
+       nestedDropdowns.forEach(function (item) {
+           item.addEventListener("click", function (event) {
+               event.stopPropagation(); // Prevent the click event from bubbling up
+
+               var target = this.getAttribute("data-bs-target");
+               var dropdownMenu = document.querySelector("[data-bs-toggle='" + target + "']");
+
+               if (dropdownMenu.classList.contains("show")) {
+                   dropdownMenu.classList.remove("show");
+               } else {
+                   dropdownMenu.classList.add("show");
+               }
+           });
+       });
+
+       // Close dropdown when clicking outside
+       document.addEventListener('click', function (event) {
+           nestedDropdowns.forEach(function (item) {
+               var target = item.getAttribute("data-bs-target");
+               var dropdownMenu = document.querySelector("[data-bs-toggle='" + target + "']");
+               
+               if (!item.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                   dropdownMenu.classList.remove("show");
+               }
+           });
+       });
+   }
+});
+
+   </script>
 </body>
 </body>
 

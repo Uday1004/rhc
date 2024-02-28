@@ -60,7 +60,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s"
         style="position: relative; background-color: #001d23 !important;" >
-        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+        <a href="/index.html" class="navbar-brand ms-4 ms-lg-0">
             <h1 class="fw-bold text-primary m-0">Rapid<span class="text-white">Health</span><span><i
                         class="fa fa-stethoscope me-2"></i></span></h1>
             <!-- <img src="img/logo1.png" alt=""> -->
@@ -71,8 +71,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="/" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="/index.html" class="nav-item nav-link">Home</a>
+                <div class="nav-item dropdown">
+                  <a href="" class="nav-link dropdown-toggle active " data-bs-toggle="dropdown">About</a>
+                  <div class="dropdown-menu m-0" style="background-color:#001d23; ">
+                      <a href="/About/Solutions.html" class="dropdown-item "> RHC Solutions </a>
+                      <a href="/About/ourmission.html" class="dropdown-item ">Our Mission</a>
+                      <a href="/About/ourvision.html" class="dropdown-item ">Our Vision</a>
+                      
+                  </div>
+              </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                     <div class="dropdown-menu m-0" style="background-color:#001d23;">
@@ -80,51 +88,52 @@
                             Tele-Services <span><i class="fa fa-caret-down"></i></span>
                             <div class="nested-dropdown-menu bg-dark" style="border: 1px solid #FF6F0F;">
                                 <!-- Nested dropdown content (cards) -->
-                                <div class="dropdown-item2">
+                                <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
                                     Tele ICU
-                                </div>
-                                <div class="dropdown-item2">
+                                </a>
+                                <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
                                     Tele Hospitalist/Nocturnist
-                                </div>
-                                <div class="dropdown-item2">
+                                </a>
+                                <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
                                     Tele Neurology
-                                </div>
-                                <div class="dropdown-item2">
+                                </a>
+                                <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
                                     Tele Psychiatry
-                                </div>
-                                <div class="dropdown-item2">
+                                </a>
+                                <a href="/Services/tele-services/teleicu.html" class="dropdown-item2">
                                     Virtual Nurse Practitioner
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="dropdown-item nested-dropdown " data-bs-target="dropdown">
                             In-Person service <span><i class="fa fa-caret-down"></i></span>
                             <div class="nested-dropdown-menu bg-dark" style="border: 1px solid #FF6F0F;">
                                 <!-- Nested dropdown content (cards) -->
-                                <div class="dropdown-item2">
+                                <a href="/Services/in-person/PulmonaryCare.html" class="dropdown-item2">
                                     pulmonary care
-                                </div>
-                                <div class="dropdown-item2">
+                                </a>
+                                <a href="/Services/in-person/SleepmedicineCare.html" class="dropdown-item2">
                                     Sleep-Medicine care
-                                </div>
-                                <div class="dropdown-item2">
+                                </a>
+                                <a href="/Services/in-person/CriticalCare.html" class="dropdown-item2">
                                     Critical care
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <!-- <a href="SleepmedicineCare.html" class="dropdown-item">Sleep Medicine</a>
                       <a href="CriticalCare.html" class="dropdown-item">Critical Care</a> -->
                     </div>
                 </div>
-                <a href="team.html" class="nav-item nav-link">Team</a>
-                <a href="contact.html" class="nav-item nav-link">Inquiry</a>
+                <a href="" class="nav-item nav-link">Career</a>
+                    <a href="" class="nav-item nav-link">Technology</a>
+                    <a href="/contact.html" class="nav-item nav-link">Inquiry</a>
 
             </div>
 
 
         </div>
         <div class="d-none d-lg-flex ms-2">
-            <a class="btn btn-outline-primary py-2 px-3" href="DrService.html">
+            <a class="btn btn-outline-primary py-2 px-3" href="/Services/DrService.html">
                 Service Request
 
             </a>
@@ -311,6 +320,44 @@
 
   <!-- Template Javascript -->
   <script src="/js/main.js"></script>
+  <script>
+    // JavaScript code to toggle nested dropdown on non-desktop devices
+    document.addEventListener("DOMContentLoaded", function () {
+var isDesktop = window.matchMedia("(min-width: 992px)").matches;
+
+if (!isDesktop) {
+   var nestedDropdowns = document.querySelectorAll(".nested-dropdown");
+
+   nestedDropdowns.forEach(function (item) {
+       item.addEventListener("click", function (event) {
+           event.stopPropagation(); // Prevent the click event from bubbling up
+
+           var target = this.getAttribute("data-bs-target");
+           var dropdownMenu = document.querySelector("[data-bs-toggle='" + target + "']");
+
+           if (dropdownMenu.classList.contains("show")) {
+               dropdownMenu.classList.remove("show");
+           } else {
+               dropdownMenu.classList.add("show");
+           }
+       });
+   });
+
+   // Close dropdown when clicking outside
+   document.addEventListener('click', function (event) {
+       nestedDropdowns.forEach(function (item) {
+           var target = item.getAttribute("data-bs-target");
+           var dropdownMenu = document.querySelector("[data-bs-toggle='" + target + "']");
+           
+           if (!item.contains(event.target) && !dropdownMenu.contains(event.target)) {
+               dropdownMenu.classList.remove("show");
+           }
+       });
+   });
+}
+});
+
+</script>
 
 </body>
    
