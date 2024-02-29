@@ -119,6 +119,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+ 
+document.addEventListener("DOMContentLoaded", function () {
+    var toggleContentButton = document.getElementById('toggleContentButton');
+    var additionalContent = document.getElementById('additionalContent');
+
+    // Add event listener to the toggle button
+    toggleContentButton.addEventListener('click', function () {
+    // Toggle the visibility of additional content
+    if (additionalContent.style.display === 'none') {
+        additionalContent.style.display = 'block';
+    } else {
+        additionalContent.style.display = 'none';
+    }
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    var toggleContentButton = document.getElementById('toggleContentButton2');
+    var additionalContent = document.getElementById('additionalContent2');
+
+    // Add event listener to the toggle button
+    toggleContentButton.addEventListener('click', function () {
+    // Toggle the visibility of additional content
+    if (additionalContent.style.display === 'none') {
+        additionalContent.style.display = 'block';
+    } else {
+        additionalContent.style.display = 'none';
+    }
+    });
+});
+              
+
+
+
 
 
 

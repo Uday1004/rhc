@@ -487,5 +487,9 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+.serv-content{
+    box-shadow:  -3px 1px 5px whitesmoke;
+    border-radius: 10px;
+}
  
 
