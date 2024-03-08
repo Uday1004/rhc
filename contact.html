@@ -151,18 +151,20 @@
                     <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Contact Us</div>
                     <h1 class="display-6 mb-5">If You Have Any Query, Please Contact Us</h1>
                     <p class="mb-4">Have questions or need assistance? We're here to help! Reach out to our dedicated team at RapidHealthConnect.org for personalized support and expert guidance.</a></p>
-                    <form>
+                    <form id="sub-form">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                    <label for="name">Your Name</label>
+                                    <label for="name">Your Name<span style="color: red;">*</span></label>
+                                    <div id="errorName" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email">Your Email</label>
+                                    <label for="email">Your Email<span style="color: red;">*</span></label>
+                                    <div id="errorEmail" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -173,15 +175,16 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                    <label for="message">Message</label>
+                                    <textarea class="form-control" placeholder="Leave a message here"  style="height: 100px" id="message"></textarea>
+                                    <label for="message">Message<span style="color: red;">*</span></label>
+                                    <div id="errorMessage" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary py-2 px-3 me-3">
-                                    Send Message
+                                <input class="btn btn-primary py-2 px-3 me-3" onclick="return contact()" type="button" value="submit">
+                               
                                      
-                                </button>
+                               
                             </div>
                         </div>
                     </form>
@@ -269,6 +272,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="/js/Valid.js"></script>
 </body>
 
 </html>

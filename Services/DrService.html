@@ -177,29 +177,35 @@
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <select class="form-select" id="title" aria-label="Select Title">
-                                        <option selected>Select Type<span style="color: red;">*</span></option>
-                                        <option value="Mr.">Individual</option>
-                                        <option value="Ms.">Hospital/Organization/Other</option>
+                                        <option selected value="default">Select Type<span style="color: red;">*</span></option>
+                                        <option id='type1' value="Mr.">Individual</option>
+                                        <option id='type2' value="Ms.">Hospital/Organization/Other</option>
                                     </select>
                                     <label for="title">User Type <span style="color: red;">*</span></label>
+                                    <div id="errortype" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="name" placeholder="Your Name">
                                     <label for="name">Your Name<span style="color: red;">*</span></label>
+                                    <div id="errorName" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
+                            
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email" placeholder="Your Email">
                                     <label for="email">Your Email<span style="color: red;">*</span></label>
+                                    <div id="errorEmail" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
+                            
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="tel" class="form-control" id="email" placeholder="Phone Number">
-                                    <label for="tel">Phone Number<span style="color: red;">*</span></label>
+                                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number">
+                                    <label for="phoneNumber">Phone Number<span style="color: red;">*</span></label>
+                                    <div id="errorPhoneNumber" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -217,25 +223,26 @@
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="tel" class="form-control" id="email" placeholder="XXXXX">
-                                    <label for="tel">Zip Code<span style="color: red;">*</span></label>
+                                    <input type="tel" class="form-control" id="zipCode" placeholder="XXXXX">
+                                    <label for="zipCode">Zip Code<span style="color: red;">*</span></label>
+                                    <div id="errorZipCode" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="title" aria-label="Select Title">
-                                        <option selected>Select Service</option>
+                                    <select class="form-select" id="title2" aria-label="Select Title">
+                                        <option selected value="default">Select Service</option>
                                         <option value="service-1">Tele ICU</option>
                                         <option value="service-2">Tele Hospitalist/Nocturnist</option>
                                         <option value="service-3">Tele Neurology</option>
-                                        <option value="service-3">Tele Psychiatry</option>
-                                        <option value="service-3">Virtual Nurse Practitioner</option>
-                                        <option value="service-3">Pulmonary Care</option>
-                                        <option value="service-3">Sleep Medicine Care</option>
-                                        <option value="service-3">Critical Care</option>
-
+                                        <option value="service-4">Tele Psychiatry</option>
+                                        <option value="service-5">Virtual Nurse Practitioner</option>
+                                        <option value="service-6">Pulmonary Care</option>
+                                        <option value="service-7">Sleep Medicine Care</option>
+                                        <option value="service-8">Critical Care</option>
                                     </select>
-                                    <label for="title">Services <span style="color: red;">*</span></label>
+                                    <label for="title2">Services <span style="color: red;">*</span></label>
+                                    <div id="errorService" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -252,9 +259,11 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <input type="submit" value="submit" class="btn btn-primary py-2 px-3 me-3" onclick="clicked()">
+                                <input type="submit" value="submit" class="btn btn-primary py-2 px-3 me-3" onclick="return submitForm()">
 
-                                </input>
+
+                              </input>
+
                                 <a class="btn btn-primary py-2 px-3 me-3" href="/index.html">
                                     Go back to Home
                                 </a>
@@ -341,21 +350,11 @@
     <script src="/lib/waypoints/waypoints.min.js"></script>
     <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="/lib/parallax/parallax.min.js"></script>
-
+    
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
-    <script>
-        function clicked() {
-            document.getElementById('sub-form').innerHTML = ` 
-                <div class="submission-success">
-                    <h2>Thank you, submission is successful!</h2>
-                    <p>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
-                    <a class="btn btn-primary py-2 px-3 me-3" href="index.html">
-                                    Go back to Home
-                                </a>
-                </div>`
-        }
-    </script>
+    <script src="/js/Valid.js"></script>
+     
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         // JavaScript code to toggle nested dropdown on non-desktop devices
