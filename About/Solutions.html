@@ -32,6 +32,15 @@
   <!-- Template Stylesheet -->
   <link href="/css/style.css" rel="stylesheet">
 </head>
+<style>
+  .sol-card:hover{
+    box-shadow: whitesmoke 0px 0px 15px 20px;
+    transition: .5s;
+    cursor:pointer;
+    
+
+  }
+</style>
 
 <body>
   <!-- Spinner Start -->
@@ -160,7 +169,7 @@
     <div class="container mt-5" style="margin-top: 5rem !important;">
       <div class="row">
         <!-- Staff Experience Section -->
-        <div class="col-md-6 wow fadeIn">
+        <div class="col-md-6 wow fadeIn rounded" style="box-shadow:whitesmoke 0px 0px 15px 20px ;">
             <h1 class="title">Our Solutions</h1>
             <p class="description">
                 At RapidHealthConnect, we empower hospitals to encourage collaborative thinking, enhancing patient care. We provide comprehensive solutions for delivering gold standard critical care and/or pulmonary services, both in-person and through telemedicine. Our aim is to assist hospitals in expanding and nurturing their patient base by eliminating gaps in care.
@@ -174,9 +183,9 @@
         </div>
         <div class="col-md-6 wow fadeIn">
             <!-- Video Section -->
-            <div class="video-container">
+            <div class="video-container"  >
                 <!-- Embed your video here -->
-                <iframe  width="600" height="400"   src="https://www.youtube.com/embed/xl9a2wIH5sY" frameborder="0" allowfullscreen></iframe>
+                <iframe  width="600" height="400" style="box-shadow: gray 5px 5px 5px;" class="rounded"  src="https://www.youtube.com/embed/xl9a2wIH5sY" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -184,25 +193,25 @@
     <!-- Bullet Points Section -->
     <div class="row mt-4">
         <!-- First Bullet Point -->
-        <div class="col-md-6">
-            <h2><i class="fas fa-home"></i> Close the Gap</h2>
+        <div class="col-md-6 mt-5 sol-card rounded">
+            <h2 class="p-2"><i class="fas fa-home"></i> Close the Gap</h2>
             <p>RapidHealthConnect provides comprehensive pulmonary and critical care services, accessible both in-person and remotely. Our offerings ensure that patients receive the highest quality care and attention regardless of their location.</p>
         </div>
         <!-- Second Bullet Point -->
-        <div class="col-md-6">
-            <h2><i class="fas fa-users"></i> Target Audience</h2>
+        <div class="col-md-6  mt-5 sol-card rounded">
+            <h2 class="p-2"><i class="fas fa-users"></i> Target Audience</h2>
             <p>RapidHealthConnect offers essential support to mid to small-sized community hospitals, providing short or long-term coverage assistance both in-person and remotely.</p>
         </div>
     </div>
     <div class="row mt-4">
         <!-- Third Bullet Point -->
-        <div class="col-md-6">
-            <h2><i class="fas fa-wallet"></i> Cost Savings</h2>
+        <div class="col-md-6  mt-5 sol-card rounded">
+            <h2 class="p-2"><i class="fas fa-wallet"></i> Cost Savings</h2>
             <p>As a physician-owned group, we prioritize delivering the most cost-effective solutions to our clients. With no administrative costs for our services, we focus solely on providing efficient and affordable healthcare solutions.</p>
         </div>
         <!-- Fourth Bullet Point -->
-        <div class="col-md-6">
-            <h2><i class="fa-solid fa-user-doctor"></i> Staff Experience</h2>
+        <div class="col-md-6  mt-5 sol-card rounded">
+            <h2 class="p-2"><i class="fa-solid fa-user-doctor"></i> Staff Experience</h2>
             <p>Our staff brings a wealth of experience that directly translates into improved patient outcomes and operational efficiencies. With our expertise, we consistently achieve reduced mortality rates, lower complication rates, and shorter lengths of stay for patients.</p>
         </div>
     </div>
