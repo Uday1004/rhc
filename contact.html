@@ -151,40 +151,62 @@
                     <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Contact Us</div>
                     <h1 class="display-6 mb-5">If You Have Any Query, Please Contact Us</h1>
                     <p class="mb-4">Have questions or need assistance? We're here to help! Reach out to our dedicated team at RapidHealthConnect.org for personalized support and expert guidance.</a></p>
-                    <form id="sub-form">
+                    <form id="sub-form" action="https://script.google.com/macros/s/AKfycbxkfdgil3iGpw8wlA2TbvJp2XHzA1uspkU0xma--iOeAjrrjNrpGjqcHc0TulRiw__z_w/exec" method="post">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
                                     <label for="name">Your Name<span style="color: red;">*</span></label>
                                     <div id="errorName" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
                                     <label for="email">Your Email<span style="color: red;">*</span></label>
                                     <div id="errorEmail" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Contact Number">
+                                    <label for="phone">Phone<span style="color: red;">*</span></label>
+                                    <div id="errorPhone" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="title3" name="title3" aria-label="Select Title">
+                                        <option selected value="default">Select Type<span style="color: red;">*</span></option>
+                                        <option id='type1' value="General">General</option>
+                                        <option id='type2' value="For Hiring">For Hiring</option>
+                                    </select>
+                                    <label for="title">Select Reference<span style="color: red;">*</span></label>
+                                    <div id="Problemerrortype" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here"  style="height: 100px" id="message"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a message here" style="height: 100px" id="message" name="message"></textarea>
                                     <label for="message">Message<span style="color: red;">*</span></label>
                                     <div id="errorMessage" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <input class="btn btn-primary py-2 px-3 me-3" onclick="return contact()" type="button" value="submit">
-                               
-                                     
-                               
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Gice Url Of Your Resume (Google Drive)" id="fileUrl" name="fileUrl"></input>
+                                    <label for="fileUrl">Give Url Of Your Resume (Google Drive)<span style="color: red;">*</span></label>
+                                    <div id="errorurl" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <input class="btn btn-primary py-2 px-3 me-3" type="submit" value="Submit" onclick="return contact()" >
                             </div>
                         </div>
                     </form>
@@ -272,7 +294,34 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="/js/SheetDB.js"></script>
     <script src="/js/Valid.js"></script>
+    <script>
+        // JavaScript code to handle form submission
+    document.getElementById("sub-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        var formData = new FormData(this); // Get form data
+
+        fetch(this.getAttribute("action"), {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data); // Log success message
+            // Add any other success actions here, like showing a confirmation message
+        })
+        .catch(error => {
+            console.error('There was an error!', error);
+            // Add error handling here, like displaying an error message to the user
+        });
+    });
+    </script>
 </body>
 
 </html>

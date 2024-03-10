@@ -69,8 +69,6 @@ function validateForm() {
     
 
 }
-
-
 function submitForm() {
     if (validateForm()) {
         document.getElementById('sub-form').innerHTML = ` 
@@ -90,6 +88,8 @@ function submitForm() {
 
 }
 
+// ############################################################################################################################################################################
+
 //Contact form
 
 function contact() {
@@ -98,10 +98,14 @@ function contact() {
     var inputName = document.getElementById('name').value;
     var inputEmail = document.getElementById('email').value;
     var inputMessage = document.getElementById('message').value;
+    var inputPhone = document.getElementById('phone').value;
 
     var nameError = document.getElementById('errorName');
     var emailError = document.getElementById('errorEmail');
     var messageError = document.getElementById('errorMessage');
+    var errorPhone = document.getElementById('errorPhone');
+    var ProblemType = document.getElementById('title3').value;
+    var fileUrl = document.getElementById('fileUrl').value;
 
     if (inputName.trim() === '') {
         nameError.innerHTML = 'Please enter your name.';
@@ -121,17 +125,55 @@ function contact() {
     } else {
         messageError.innerHTML = '';
     }
+    if (inputPhone.trim() === '') {
+         errorPhone.innerHTML = 'Please enter your Contact Number.';
+        isValid = false;
+    } else {
+        errorPhone.innerHTML = '';
+    }
+    if (fileUrl.trim() === '') {
+         document.getElementById('errorurl').innerHTML = 'Please Upload URl';
+        isValid = false;
+    } else {
+        document.getElementById('errorurl').innerHTML = '';
+    }
+    if (ProblemType === 'default') {
+        isValid = false;
+        document.getElementById('Problemerrortype').innerText = 'Please select a Type.';
+    } else {
+        document.getElementById('Problemerrortype').innerText = '';
+    }
 
     if (isValid) {
-        document.getElementById('sub-form').innerHTML = `
-            <div class="submission-success">
-                <h2 class='text-center'>Thank you, submission is successful!</h2>
-                <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
-                 
-            </div>`;
+        var formData = new FormData(document.getElementById("sub-form"));
+
+        fetch(document.getElementById("sub-form").getAttribute("action"), {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data); // Log success message
+            // Add any other success actions here, like showing a confirmation message
+            document.getElementById('sub-form').innerHTML = `
+                <div class="submission-success">
+                    <h2 class='text-center'>Thank you, submission is successful!</h2>
+                    <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
+                </div>`;
+        })
+        .catch(error => {
+            console.error('There was an error!', error);
+            // Add error handling here, like displaying an error message to the user
+        });
     }
 
     return false; // Prevent default form submission
 }
+
 
 
