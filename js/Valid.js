@@ -92,7 +92,7 @@ function submitForm() {
 
 //Contact form
 
-function contact() {
+function contact() { 
     var isValid = true;
 
     var inputName = document.getElementById('name').value;
@@ -131,12 +131,12 @@ function contact() {
     } else {
         errorPhone.innerHTML = '';
     }
-    if (fileUrl.trim() === '') {
-         document.getElementById('errorurl').innerHTML = 'Please Upload URl';
-        isValid = false;
-    } else {
-        document.getElementById('errorurl').innerHTML = '';
-    }
+    // if (fileUrl.trim() === '') {
+    //      document.getElementById('errorurl').innerHTML = 'Please Upload URl';
+    //     isValid = false;
+    // } else {
+    //     document.getElementById('errorurl').innerHTML = '';
+    // }
     if (ProblemType === 'default') {
         isValid = false;
         document.getElementById('Problemerrortype').innerText = 'Please select a Type.';
@@ -145,6 +145,7 @@ function contact() {
     }
 
     if (isValid) {
+        document.getElementById("submitButton").value = "Wait a Second..";
         var formData = new FormData(document.getElementById("sub-form"));
 
         fetch(document.getElementById("sub-form").getAttribute("action"), {
@@ -165,6 +166,7 @@ function contact() {
                     <h2 class='text-center'>Thank you, submission is successful!</h2>
                     <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
                 </div>`;
+             
         })
         .catch(error => {
             console.error('There was an error!', error);
