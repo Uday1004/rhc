@@ -1,8 +1,7 @@
  
-function validateForm() {
+function submitForm() {
     var isValid = true;
 
-    
     // Validate name
     var name = document.getElementById('name').value.trim();
     if (name === '') {
@@ -44,7 +43,7 @@ function validateForm() {
     }
 
     // Validate service selection
-    var service = document.getElementById('title2').value;
+    var service = document.getElementById('servicetype').value;
     if (service === 'default') {
         isValid = false;
         document.getElementById('errorService').innerText = 'Please select a service.';
@@ -52,96 +51,154 @@ function validateForm() {
         document.getElementById('errorService').innerText = '';
     }
 
-    //User-Type
-    var Usertype = document.getElementById('title').value;
-    if (Usertype === 'default') {
+    // Validate user type
+    var userType = document.getElementById('usertype').value;
+    if (userType === 'default') {
         isValid = false;
         document.getElementById('errortype').innerText = 'Please select a Type.';
     } else {
         document.getElementById('errortype').innerText = '';
     }
 
-    return isValid;
-         
+    var address1 = document.getElementById('add1').value;
+    var address2 = document.getElementById('add2').value;
+    var message = document.getElementById('message').value;
+    var subject = document.getElementById('subject').value;
 
+    if (isValid) {
+        var submitButton = document.getElementById("submitButton");
+        submitButton.value = "Wait a Second..";
 
-    
-    
+        var formData = new FormData(document.getElementById("serve-form"));
 
-}
-function submitForm() {
-    if (validateForm()) {
-        document.getElementById('sub-form').innerHTML = ` 
-                <div class="submission-success">
-                    <h2>Thank you, submission is successful!</h2>
-                    <p>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
-                    <a class="btn btn-primary py-2 px-3 me-3" href="index.html">
-                                    Go back to Home
-                                </a>
-                </div>`
-        return true;
-    } else {
-        // If validation fails, prevent form submission
+        fetch(document.getElementById("serve-form").getAttribute("action"), {
+            method: "POST",
+            body: formData,
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.text();
+        })
+        .then((data) => {
+            emailjs.init('2wXTFnidIOznuU-VN');
+            console.log(data); // Log success message
+            
+            emailjs.send("service_06de9wb", "template_fymzklb", {
+                // emailjs account created by cloudstry account {usolanki@cloudstrytech.com}
+                type: userType,
+                name: name,
+                email: email,
+                phone: phoneNumber,
+                address1 : address1,
+                address2 : address2,
+                zipcode: zipCode,
+                service:service,
+                subject: subject,
+                message: message
+            }).then(
+                function(response) {
+                    console.log("Admin notification email sent successfully:", response);
+                    document.getElementById('serve-form').innerHTML = `
+                    <div class="submission-success">
+                    <h2 class='text-center'>Thank you, submission is successful!</h2>
+                    <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
+                    </div>`;
+                    // Optionally handle success
+                },
+                function(error) {
+                    console.error("Error sending admin notification email:", error);
+                    // Optionally handle failure
+                }
+                );
+            })
+            .catch((error) => {
+                console.error("There was an error!", error);
+                
+                
+                
+                // Add error handling here, like displaying an error message to the user
+            });
+        }
+        
         return false;
+
     }
 
+    
+    
 
-}
+// function submitForm() {
+//     if (validateForm()) {
+//         document.getElementById('sub-form').innerHTML = ` 
+//                 <div class="submission-success">
+//                     <h2>Thank you, submission is successful!</h2>
+//                     <p>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
+//                     <a class="btn btn-primary py-2 px-3 me-3" href="index.html">
+//                                     Go back to Home
+//                                 </a>
+//                 </div>`
+//         return true;
+//     } else {
+//         // If validation fails, prevent form submission
+//         return false;
+//     }
+
+
+// }
 
 // ############################################################################################################################################################################
 
 //Contact form
 
-function contact() { 
+ 
+function contact() {
     var isValid = true;
 
-    var inputName = document.getElementById('name').value;
-    var inputEmail = document.getElementById('email').value;
-    var inputMessage = document.getElementById('message').value;
-    var inputPhone = document.getElementById('phone').value;
+    var inputName = document.getElementById("name").value;
+    var inputEmail = document.getElementById("email").value;
+    var inputMessage = document.getElementById("message").value;
+    var inputPhone = document.getElementById("phone").value;
+    var ProblemType = document.getElementById("title3").value;
+    var inputSubject = document.getElementById('subject').value;
 
-    var nameError = document.getElementById('errorName');
-    var emailError = document.getElementById('errorEmail');
-    var messageError = document.getElementById('errorMessage');
-    var errorPhone = document.getElementById('errorPhone');
-    var ProblemType = document.getElementById('title3').value;
-    var fileUrl = document.getElementById('fileUrl').value;
+    var nameError = document.getElementById("errorName");
+    var emailError = document.getElementById("errorEmail");
+    var messageError = document.getElementById("errorMessage");
+    var errorPhone = document.getElementById("errorPhone");
 
-    if (inputName.trim() === '') {
-        nameError.innerHTML = 'Please enter your name.';
+    if (inputName.trim() === "") {
+        nameError.innerHTML = "Please enter your name.";
         isValid = false;
     } else {
-        nameError.innerHTML = '';
+        nameError.innerHTML = "";
     }
-    if (inputEmail.trim() === '') {
-        emailError.innerHTML = 'Please enter your email.';
+    if (inputEmail.trim() === "") {
+        emailError.innerHTML = "Please enter your email.";
         isValid = false;
     } else {
-        emailError.innerHTML = '';
+        emailError.innerHTML = "";
     }
-    if (inputMessage.trim() === '') {
-        messageError.innerHTML = 'Please enter your message.';
+    if (inputMessage.trim() === "") {
+        messageError.innerHTML = "Please enter your message.";
         isValid = false;
     } else {
-        messageError.innerHTML = '';
+        messageError.innerHTML = "";
     }
-    if (inputPhone.trim() === '') {
-         errorPhone.innerHTML = 'Please enter your Contact Number.';
+    if (inputPhone.trim() === "") {
+        errorPhone.innerHTML = "Please enter your Contact Number.";
         isValid = false;
     } else {
-        errorPhone.innerHTML = '';
+        errorPhone.innerHTML = "";
     }
-    // if (fileUrl.trim() === '') {
-    //      document.getElementById('errorurl').innerHTML = 'Please Upload URl';
-    //     isValid = false;
-    // } else {
-    //     document.getElementById('errorurl').innerHTML = '';
-    // }
-    if (ProblemType === 'default') {
+    //
+    if (ProblemType === "default") {
         isValid = false;
-        document.getElementById('Problemerrortype').innerText = 'Please select a Type.';
+        document.getElementById("Problemerrortype").innerText =
+            "Please select a Type.";
     } else {
-        document.getElementById('Problemerrortype').innerText = '';
+        document.getElementById("Problemerrortype").innerText = "";
     }
 
     if (isValid) {
@@ -149,27 +206,51 @@ function contact() {
         var formData = new FormData(document.getElementById("sub-form"));
 
         fetch(document.getElementById("sub-form").getAttribute("action"), {
-            method: 'POST',
-            body: formData
+            method: "POST",
+            body: formData,
         })
-        .then(response => {
+        .then((response) => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error("Network response was not ok");
             }
             return response.text();
         })
-        .then(data => {
+        // .catch((error)=>{
+        //     console.log('There was an error!',error)
+        // })
+        .then((data) => {
+            emailjs.init('2wXTFnidIOznuU-VN');
             console.log(data); // Log success message
-            // Add any other success actions here, like showing a confirmation message
-            document.getElementById('sub-form').innerHTML = `
+             
+            emailjs.send("service_06de9wb", "template_jdyj0cu", {
+                // emailjs account created by cloudstry account {usolanki@cloudstrytech.com}
+                name: inputName,
+                email: inputEmail,
+                phone: inputPhone,
+                title3: ProblemType,
+                subject: inputSubject,
+                message: inputMessage
+            }).then(
+                function(response) {
+                    console.log("Admin notification email sent successfully:", response);
+                    document.getElementById('sub-form').innerHTML = `
                 <div class="submission-success">
                     <h2 class='text-center'>Thank you, submission is successful!</h2>
                     <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
                 </div>`;
-             
+                    // Optionally handle success
+                },
+                function(error) {
+                    console.error("Error sending admin notification email:", error);
+                    // Optionally handle failure
+                }
+            );
         })
-        .catch(error => {
-            console.error('There was an error!', error);
+        .catch((error) => {
+            console.error("There was an error!", error);
+    
+            
+    
             // Add error handling here, like displaying an error message to the user
         });
     }

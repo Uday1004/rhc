@@ -172,14 +172,17 @@
                     <h1 class="display-6 mb-5">Initiate Services</h1>
                     <p class="mb-4">Please give us your related information and stay with us, we wish better for you and
                         your future, We will contact you soon.</a>.</p>
-                    <form id="sub-form">
+                    <form id="serve-form"
+                    action="https://script.google.com/macros/s/AKfycbxbiNwCbmPJdfLFtq94DY0LdIQP32zffCiO7-Hv_qVeX9aRbE5NspbuHjTfIrN6kPur/exec"
+                     method="post"
+                    >
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="title" aria-label="Select Title">
+                                    <select class="form-select" id="usertype" aria-label="Select Title">
                                         <option selected value="default">Select Type<span style="color: red;">*</span></option>
-                                        <option id='type1' value="Mr.">Individual</option>
-                                        <option id='type2' value="Ms.">Hospital/Organization/Other</option>
+                                        <option id='type1' value="Individual">Individual</option>
+                                        <option id='type2' value="Hospital/Organization/Other">Hospital/Organization/Other</option>
                                     </select>
                                     <label for="title">User Type <span style="color: red;">*</span></label>
                                     <div id="errortype" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
@@ -210,14 +213,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="email" placeholder="Your Adress">
-                                    <label for="tel">Address 1</label>
+                                    <input type="text" class="form-control" id="add1" placeholder="Your Adress">
+                                    <label for="text">Address 1</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="email" placeholder="Your Adress">
-                                    <label for="tel">Address 2</label>
+                                    <input type="text" class="form-control" id="add2" placeholder="Your Adress">
+                                    <label for="text">Address 2</label>
                                 </div>
                             </div>
 
@@ -230,16 +233,16 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="title2" aria-label="Select Title">
+                                    <select class="form-select" id="servicetype" aria-label="Select Title">
                                         <option selected value="default">Select Service</option>
-                                        <option value="service-1">Tele ICU</option>
-                                        <option value="service-2">Tele Hospitalist/Nocturnist</option>
-                                        <option value="service-3">Tele Neurology</option>
-                                        <option value="service-4">Tele Psychiatry</option>
+                                        <option value="Tele ICU">Tele ICU</option>
+                                        <option value="Tele Hospitalist/Nocturnist">Tele Hospitalist/Nocturnist</option>
+                                        <option value="Tele Neurology">Tele Neurology</option>
+                                        <option value="Tele Psychiatry">Tele Psychiatry</option>
                                         <option value="service-5">Virtual Nurse Practitioner</option>
-                                        <option value="service-6">Pulmonary Care</option>
-                                        <option value="service-7">Sleep Medicine Care</option>
-                                        <option value="service-8">Critical Care</option>
+                                        <option value="Virtual Nurse Practitioner">Pulmonary Care</option>
+                                        <option value="Sleep Medicine Care">Sleep Medicine Care</option>
+                                        <option value="Critical Care">Critical Care</option>
                                     </select>
                                     <label for="title2">Services <span style="color: red;">*</span></label>
                                     <div id="errorService" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
@@ -259,7 +262,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <input type="submit" value="submit" class="btn btn-primary py-2 px-3 me-3" onclick="return submitForm()">
+                                <input type="submit" value="submit" id="submitButton" class="btn btn-primary py-2 px-3 me-3" onclick="return submitForm()">
 
 
                               </input>
