@@ -61,25 +61,21 @@ function submitForm() {
     }
 
     // Retrieve other form fields
-    var address1 = document.getElementById('add1').value;
-    var address2 = document.getElementById('add2').value;
+    var address1 = document.getElementById('addressOne').value;
+    var address2 = document.getElementById('addressTwo').value;
     var subject = document.getElementById('subject').value;
     var message = document.getElementById('message').value;
 
     if (isValid) {
         // Update submit button text
-        var submitButton = document.getElementById("submitButton");
-        submitButton.value = "Wait a Second..";
+        document.getElementById("submitButton").value = "Wait a Second..";
+        var formData = new FormData(document.getElementById("sub-form"));
 
-        // Create FormData object to send form data
-        var formData = new FormData(document.getElementById("serve-form"));
-
-        // Send form data using Fetch API
-        fetch(document.getElementById("serve-form").getAttribute("action"), {
+        fetch(document.getElementById("sub-form").getAttribute("action"), {
             method: "POST",
             body: formData,
         })
-        .then(response => {
+        .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
@@ -87,6 +83,7 @@ function submitForm() {
         })
         .then((data) => {
             // Initialize EmailJS and send email
+            console.log(data)
             emailjs.init('2wXTFnidIOznuU-VN');
             emailjs.send("service_06de9wb", "template_fymzklb", {
                 type: userType,
@@ -103,7 +100,7 @@ function submitForm() {
                 function(response) {
                     // Handle success
                     console.log("Admin notification email sent successfully:", response);
-                    document.getElementById('serve-form').innerHTML = `
+                    document.getElementById('sub-form').innerHTML = `
                         <div class="submission-success">
                             <h2 class='text-center'>Thank you, submission is successful!</h2>
                             <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
