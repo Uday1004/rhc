@@ -1,4 +1,4 @@
- 
+
 function submitForm() {
     var isValid = true;
 
@@ -75,55 +75,67 @@ function submitForm() {
             method: "POST",
             body: formData,
         })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.text();
-        })
-        .then((data) => {
-            // Initialize EmailJS and send email
-            console.log(data)
-            emailjs.init('2wXTFnidIOznuU-VN');
-            emailjs.send("service_06de9wb", "template_fymzklb", {
-                type: userType,
-                name: name,
-                email: email,
-                phone: phoneNumber,
-                address1: address1,
-                address2: address2,
-                zipcode: zipCode,
-                service: service,
-                subject: subject,
-                message: message
-            }).then(
-                function(response) {
-                    // Handle success
-                    console.log("Admin notification email sent successfully:", response);
-                    document.getElementById('sub-form').innerHTML = `
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+
+                }
+                return response.text();
+            })
+            .catch((error) => {
+                console.log('Error in Sending data', error)
+                emailjs.init('9y2-7nt7W0n40tp2k');
+                emailjs.send("service_nywgfzp", "template_5oej7kb", {
+                    subject: 'There was an Error in Sending the Form data',
+                    message: `Hello RHC.org, we regret to inform that due to technical glitch we are not able to reach the user's data to you, please contact the technical team as soon as possible, Thank you.`
+                })
+
+            })
+            .then((data) => {
+                // Initialize EmailJS and send email
+                console.log(data)
+                emailjs.init('2wXTFnidIOznuU-VN');
+                emailjs.send("service_06de9wb", "template_fymzklb", {
+                    type: userType,
+                    name: name,
+                    email: email,
+                    phone: phoneNumber,
+                    address1: address1,
+                    address2: address2,
+                    zipcode: zipCode,
+                    service: service,
+                    subject: subject,
+                    message: message
+                }).then(
+                    function (response) {
+                        // Handle success
+                        console.log("Admin notification email sent successfully:", response);
+                        document.getElementById('sub-form').innerHTML = `
                         <div class="submission-success">
                             <h2 class='text-center'>Thank you, submission is successful!</h2>
                             <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
                         </div>`;
-                },
-                function(error) {
-                    // Handle failure
-                    console.error("Error sending admin notification email:", error);
-                }
-            );
-        })
-        .catch((error) => {
-            // Handle fetch or emailjs errors
-            console.error("There was an error!", error);
-        });
+                    },
+                    function (error) {
+                        // Handle failure
+                        console.error("Error sending admin notification email:", error);
+
+                    }
+                );
+            })
+            .catch((error) => {
+                // Handle fetch or emailjs errors
+                console.error("There was an error!", error);
+
+            });
     }
 
     return false; // Prevent default form submission
 }
 
 
-    
-    
+
+
 
 // function submitForm() {
 //     if (validateForm()) {
@@ -148,7 +160,7 @@ function submitForm() {
 
 //Contact form
 
- 
+
 function contact() {
     var isValid = true;
 
@@ -205,50 +217,58 @@ function contact() {
             method: "POST",
             body: formData,
         })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.text();
-        })
-        // .catch((error)=>{
-        //     console.log('There was an error!',error)
-        // })
-        .then((data) => {
-            emailjs.init('2wXTFnidIOznuU-VN');
-            console.log(data); // Log success message
-             
-            emailjs.send("service_06de9wb", "template_jdyj0cu", {
-                // emailjs account created by cloudstry account {usolanki@cloudstrytech.com}
-                name: inputName,
-                email: inputEmail,
-                phone: inputPhone,
-                title3: ProblemType,
-                subject: inputSubject,
-                message: inputMessage
-            }).then(
-                function(response) {
-                    console.log("Admin notification email sent successfully:", response);
-                    document.getElementById('sub-form').innerHTML = `
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.text();
+            })
+            .catch((error)=>{
+                console.log('Error in Sending data', error)
+                emailjs.init('9y2-7nt7W0n40tp2k');
+                emailjs.send("service_nywgfzp", "template_5oej7kb", {
+                    subject: 'There was an Error in Sending the Form data',
+                    message: `Hello RHC.org, we regret to inform that due to technical glitch we are not able to reach the user's data to you, please contact the technical team as soon as possible, Thank you.`,
+                    email: inputEmail,
+                
+                })
+            })
+
+            .then((data) => {
+                emailjs.init('2wXTFnidIOznuU-VN');
+                console.log(data); // Log success message
+
+                emailjs.send("service_06de9wb", "template_jdyj0cu", {
+                    // emailjs account created by cloudstry account {usolanki@cloudstrytech.com}
+                    name: inputName,
+                    email: inputEmail,
+                    phone: inputPhone,
+                    title3: ProblemType,
+                    subject: inputSubject,
+                    message: inputMessage
+                }).then(
+                    function (response) {
+                        console.log("Admin notification email sent successfully:", response);
+                        document.getElementById('sub-form').innerHTML = `
                 <div class="submission-success">
                     <h2 class='text-center'>Thank you, submission is successful!</h2>
                     <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
                 </div>`;
-                    // Optionally handle success
-                },
-                function(error) {
-                    console.error("Error sending admin notification email:", error);
-                    // Optionally handle failure
-                }
-            );
-        })
-        .catch((error) => {
-            console.error("There was an error!", error);
-    
-            
-    
-            // Add error handling here, like displaying an error message to the user
-        });
+                        // Optionally handle success
+                    },
+                    function (error) {
+                        console.error("Error sending admin notification email:", error);
+                        // Optionally handle failure
+                    }
+                );
+            })
+            .catch((error) => {
+                console.error("There was an error!", error);
+
+
+
+                // Add error handling here, like displaying an error message to the user
+            });
     }
 
     return false; // Prevent default form submission
