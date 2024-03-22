@@ -87,14 +87,14 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/index.html" class="nav-item nav-link">Home</a>
                 <div class="nav-item dropdown">
-                  <a href="" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">About</a>
-                  <div class="dropdown-menu m-0" style="background-color:#001d23; ">
-                      <a href="/About/Solutions.html" class="dropdown-item "> RHC Solutions </a>
-                      <a href="/About/ourmission.html" class="dropdown-item ">Our Mission</a>
-                      <a href="/About/ourvision.html" class="dropdown-item ">Our Vision</a>
-                      
-                  </div>
-              </div>
+                    <a href="" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu m-0" style="background-color:#001d23; ">
+                        <a href="/About/Solutions.html" class="dropdown-item "> RHC Solutions </a>
+                        <a href="/About/ourmission.html" class="dropdown-item ">Our Mission</a>
+                        <a href="/About/ourvision.html" class="dropdown-item ">Our Vision</a>
+
+                    </div>
+                </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                     <div class="dropdown-menu m-0" style="background-color:#001d23;">
@@ -143,7 +143,7 @@
                 <a href="/contact.html" class="nav-item nav-link">Inquiry</a>
 
             </div>
-            
+
         </div>
     </nav>
     </div>
@@ -173,67 +173,80 @@
                     <p class="mb-4">Please give us your related information and stay with us, we wish better for you and
                         your future, We will contact you soon.</a>.</p>
                     <form id="serve-form"
-                    action="https://script.google.com/macros/s/AKfycbxbiNwCbmPJdfLFtq94DY0LdIQP32zffCiO7-Hv_qVeX9aRbE5NspbuHjTfIrN6kPur/exec"
-                     method="post"
-                    >
+                        action="https://script.google.com/macros/s/AKfycbypcsoBk4nuNpgDzfnHdfsJUbMfj0o37q2Il6I-PjhI-BxhipL-fXu771N0Dn_6n4qF/exec"
+                        method="post">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="usertype" aria-label="Select Title">
-                                        <option selected value="default">Select Type<span style="color: red;">*</span></option>
+                                    <select class="form-select" id="usertype" name="usertype" aria-label="Select Title">
+                                        <option selected value="default">Select Type<span style="color: red;">*</span>
+                                        </option>
                                         <option id='type1' value="Individual">Individual</option>
-                                        <option id='type2' value="Hospital/Organization/Other">Hospital/Organization/Other</option>
+                                        <option id='type2' value="Hospital/Organization/Other">
+                                            Hospital/Organization/Other</option>
                                     </select>
                                     <label for="title">User Type <span style="color: red;">*</span></label>
-                                    <div id="errortype" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                    <div id="errortype" style="font-size: .8rem; text-align: left;"
+                                        class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Your Name">
                                     <label for="name">Your Name<span style="color: red;">*</span></label>
-                                    <div id="errorName" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                    <div id="errorName" style="font-size: .8rem; text-align: left;"
+                                        class="mx-2 text-danger"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Your Email">
                                     <label for="email">Your Email<span style="color: red;">*</span></label>
-                                    <div id="errorEmail" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                    <div id="errorEmail" style="font-size: .8rem; text-align: left;"
+                                        class="mx-2 text-danger"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number">
+                                    <input type="tel" class="form-control" name="phoneNumber" id="phoneNumber"
+                                        placeholder="Phone Number">
                                     <label for="phoneNumber">Phone Number<span style="color: red;">*</span></label>
-                                    <div id="errorPhoneNumber" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                    <div id="errorPhoneNumber" style="font-size: .8rem; text-align: left;"
+                                        class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="add1" placeholder="Your Adress">
+                                    <input type="text" class="form-control" name="add1" id="add1"
+                                        placeholder="Your Adress">
                                     <label for="text">Address 1</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="add2" placeholder="Your Adress">
+                                    <input type="text" class="form-control" name="add2" id="add2"
+                                        placeholder="Your Adress">
                                     <label for="text">Address 2</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="tel" class="form-control" id="zipCode" placeholder="XXXXX">
+                                    <input type="tel" class="form-control" name="zipCode" id="zipCode"
+                                        placeholder="XXXXX">
                                     <label for="zipCode">Zip Code<span style="color: red;">*</span></label>
-                                    <div id="errorZipCode" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                    <div id="errorZipCode" style="font-size: .8rem; text-align: left;"
+                                        class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="servicetype" aria-label="Select Title">
+                                    <select class="form-select" id="servicetype" name="servicetype"
+                                        aria-label="Select Title">
                                         <option selected value="default">Select Service</option>
                                         <option value="Tele ICU">Tele ICU</option>
                                         <option value="Tele Hospitalist/Nocturnist">Tele Hospitalist/Nocturnist</option>
@@ -245,27 +258,30 @@
                                         <option value="Critical Care">Critical Care</option>
                                     </select>
                                     <label for="title2">Services <span style="color: red;">*</span></label>
-                                    <div id="errorService" style="font-size: .8rem; text-align: left;" class="mx-2 text-danger"></div>
+                                    <div id="errorService" style="font-size: .8rem; text-align: left;"
+                                        class="mx-2 text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" class="form-control" id="subject" name="subject"
+                                        placeholder="Subject">
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
                                     <textarea class="form-control" placeholder="Leave a message here" id="message"
-                                        style="height: 100px"></textarea>
+                                        name="message" style="height: 100px"></textarea>
                                     <label for="message">Note</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <input type="submit" value="submit" id="submitButton" class="btn btn-primary py-2 px-3 me-3" onclick="return submitForm()">
+                                <input type="submit" value="submit" id="submitButton"
+                                    class="btn btn-primary py-2 px-3 me-3" onclick="return submitForm()">
 
 
-                              </input>
+                                </input>
 
                                 <a class="btn btn-primary py-2 px-3 me-3" href="/index.html">
                                     Go back to Home
@@ -353,51 +369,54 @@
     <script src="/lib/waypoints/waypoints.min.js"></script>
     <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="/lib/parallax/parallax.min.js"></script>
-    
+
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
     <script src="/js/Valid.js"></script>
-     
+
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
+
+         
+
         // JavaScript code to toggle nested dropdown on non-desktop devices
         document.addEventListener("DOMContentLoaded", function () {
-   var isDesktop = window.matchMedia("(min-width: 992px)").matches;
+            var isDesktop = window.matchMedia("(min-width: 992px)").matches;
 
-   if (!isDesktop) {
-       var nestedDropdowns = document.querySelectorAll(".nested-dropdown");
+            if (!isDesktop) {
+                var nestedDropdowns = document.querySelectorAll(".nested-dropdown");
 
-       nestedDropdowns.forEach(function (item) {
-           item.addEventListener("click", function (event) {
-               event.stopPropagation(); // Prevent the click event from bubbling up
+                nestedDropdowns.forEach(function (item) {
+                    item.addEventListener("click", function (event) {
+                        event.stopPropagation(); // Prevent the click event from bubbling up
 
-               var target = this.getAttribute("data-bs-target");
-               var dropdownMenu = document.querySelector("[data-bs-toggle='" + target + "']");
+                        var target = this.getAttribute("data-bs-target");
+                        var dropdownMenu = document.querySelector("[data-bs-toggle='" + target + "']");
 
-               if (dropdownMenu.classList.contains("show")) {
-                   dropdownMenu.classList.remove("show");
-               } else {
-                   dropdownMenu.classList.add("show");
-               }
-           });
-       });
+                        if (dropdownMenu.classList.contains("show")) {
+                            dropdownMenu.classList.remove("show");
+                        } else {
+                            dropdownMenu.classList.add("show");
+                        }
+                    });
+                });
 
-       // Close dropdown when clicking outside
-       document.addEventListener('click', function (event) {
-           nestedDropdowns.forEach(function (item) {
-               var target = item.getAttribute("data-bs-target");
-               var dropdownMenu = document.querySelector("[data-bs-toggle='" + target + "']");
-               
-               if (!item.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                   dropdownMenu.classList.remove("show");
-               }
-           });
-       });
-   }
-});
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function (event) {
+                    nestedDropdowns.forEach(function (item) {
+                        var target = item.getAttribute("data-bs-target");
+                        var dropdownMenu = document.querySelector("[data-bs-toggle='" + target + "']");
 
-   </script>
-     
+                        if (!item.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                            dropdownMenu.classList.remove("show");
+                        }
+                    });
+                });
+            }
+        });
+
+    </script>
+
 
 </body>
 

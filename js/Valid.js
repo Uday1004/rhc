@@ -60,17 +60,21 @@ function submitForm() {
         document.getElementById('errortype').innerText = '';
     }
 
+    // Retrieve other form fields
     var address1 = document.getElementById('add1').value;
     var address2 = document.getElementById('add2').value;
-    var message = document.getElementById('message').value;
     var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value;
 
     if (isValid) {
+        // Update submit button text
         var submitButton = document.getElementById("submitButton");
         submitButton.value = "Wait a Second..";
 
+        // Create FormData object to send form data
         var formData = new FormData(document.getElementById("serve-form"));
 
+        // Send form data using Fetch API
         fetch(document.getElementById("serve-form").getAttribute("action"), {
             method: "POST",
             body: formData,
@@ -82,49 +86,44 @@ function submitForm() {
             return response.text();
         })
         .then((data) => {
+            // Initialize EmailJS and send email
             emailjs.init('2wXTFnidIOznuU-VN');
-            console.log(data); // Log success message
-            
             emailjs.send("service_06de9wb", "template_fymzklb", {
-                // emailjs account created by cloudstry account {usolanki@cloudstrytech.com}
                 type: userType,
                 name: name,
                 email: email,
                 phone: phoneNumber,
-                address1 : address1,
-                address2 : address2,
+                address1: address1,
+                address2: address2,
                 zipcode: zipCode,
-                service:service,
+                service: service,
                 subject: subject,
                 message: message
             }).then(
                 function(response) {
+                    // Handle success
                     console.log("Admin notification email sent successfully:", response);
                     document.getElementById('serve-form').innerHTML = `
-                    <div class="submission-success">
-                    <h2 class='text-center'>Thank you, submission is successful!</h2>
-                    <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
-                    </div>`;
-                    // Optionally handle success
+                        <div class="submission-success">
+                            <h2 class='text-center'>Thank you, submission is successful!</h2>
+                            <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
+                        </div>`;
                 },
                 function(error) {
+                    // Handle failure
                     console.error("Error sending admin notification email:", error);
-                    // Optionally handle failure
                 }
-                );
-            })
-            .catch((error) => {
-                console.error("There was an error!", error);
-                
-                
-                
-                // Add error handling here, like displaying an error message to the user
-            });
-        }
-        
-        return false;
-
+            );
+        })
+        .catch((error) => {
+            // Handle fetch or emailjs errors
+            console.error("There was an error!", error);
+        });
     }
+
+    return false; // Prevent default form submission
+}
+
 
     
     
