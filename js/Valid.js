@@ -2,72 +2,72 @@
 function submitForm() {
     var isValid = true;
 
-    // Validate name
-    var name = document.getElementById('name').value.trim();
-    if (name === '') {
-        isValid = false;
-        document.getElementById('errorName').innerText = 'Please enter your name.';
-    } else {
-        document.getElementById('errorName').innerText = '';
-    }
-
-    // Validate email
-    var email = document.getElementById('email').value.trim();
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email === '') {
-        isValid = false;
-        document.getElementById('errorEmail').innerText = 'Please enter your email.';
-    } else if (!emailRegex.test(email)) {
-        isValid = false;
-        document.getElementById('errorEmail').innerText = 'Please enter a valid email address.';
-    } else {
-        document.getElementById('errorEmail').innerText = '';
-    }
-
-    // Validate phone number
-    var phoneNumber = document.getElementById('phoneNumber').value.trim();
-    if (phoneNumber === '') {
-        isValid = false;
-        document.getElementById('errorPhoneNumber').innerText = 'Please enter your phone number.';
-    } else {
-        document.getElementById('errorPhoneNumber').innerText = '';
-    }
-
-    // Validate ZIP code
-    var zipCode = document.getElementById('zipCode').value.trim();
-    if (zipCode === '') {
-        isValid = false;
-        document.getElementById('errorZipCode').innerText = 'Please enter your ZIP code.';
-    } else {
-        document.getElementById('errorZipCode').innerText = '';
-    }
-
-    // Validate service selection
-    var service = document.getElementById('servicetype').value;
-    if (service === 'default') {
-        isValid = false;
-        document.getElementById('errorService').innerText = 'Please select a service.';
-    } else {
-        document.getElementById('errorService').innerText = '';
-    }
-
-    // Validate user type
-    var userType = document.getElementById('usertype').value;
-    if (userType === 'default') {
-        isValid = false;
-        document.getElementById('errortype').innerText = 'Please select a Type.';
-    } else {
-        document.getElementById('errortype').innerText = '';
-    }
-
-    // Retrieve other form fields
-    var address1 = document.getElementById('addressOne').value;
-    var address2 = document.getElementById('addressTwo').value;
-    var subject = document.getElementById('subject').value;
-    var message = document.getElementById('message').value;
+     // Validate name
+     var name = document.getElementById('name').value.trim();
+     if (name === '') {
+         isValid = false;
+         document.getElementById('errorName').innerText = 'Please enter your name.';
+     } else {
+         document.getElementById('errorName').innerText = '';
+     }
+ 
+     // Validate email
+     var email = document.getElementById('email').value.trim();
+     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (email === '') {
+         isValid = false;
+         document.getElementById('errorEmail').innerText = 'Please enter your email.';
+     } else if (!emailRegex.test(email)) {
+         isValid = false;
+         document.getElementById('errorEmail').innerText = 'Please enter a valid email address.';
+     } else {
+         document.getElementById('errorEmail').innerText = '';
+     }
+ 
+     // Validate phone number
+     var phoneNumber = document.getElementById('phoneNumber').value.trim();
+     if (phoneNumber === '') {
+         isValid = false;
+         document.getElementById('errorPhoneNumber').innerText = 'Please enter your phone number.';
+     } else {
+         document.getElementById('errorPhoneNumber').innerText = '';
+     }
+ 
+     // Validate ZIP code
+     var zipCode = document.getElementById('zipCode').value.trim();
+     if (zipCode === '') {
+         isValid = false;
+         document.getElementById('errorZipCode').innerText = 'Please enter your ZIP code.';
+     } else {
+         document.getElementById('errorZipCode').innerText = '';
+     }
+ 
+     // Validate service selection
+     var service = document.getElementById('servicetype').value;
+     if (service === 'default') {
+         isValid = false;
+         document.getElementById('errorService').innerText = 'Please select a service.';
+     } else {
+         document.getElementById('errorService').innerText = '';
+     }
+ 
+     // Validate user type
+     var userType = document.getElementById('usertype').value;
+     if (userType === 'default') {
+         isValid = false;
+         document.getElementById('errortype').innerText = 'Please select a Type.';
+     } else {
+         document.getElementById('errortype').innerText = '';
+     }
+ 
+     // Retrieve other form fields
+     var address1 = document.getElementById('addressOne').value;
+     var address2 = document.getElementById('addressTwo').value;
+     var subject = document.getElementById('subject').value;
+     var message = document.getElementById('message').value;
 
     if (isValid) {
-        // Update submit button text
+        // Submit form if valid
         document.getElementById("submitButton").value = "Wait a Second..";
         var formData = new FormData(document.getElementById("sub-form"));
 
@@ -78,22 +78,13 @@ function submitForm() {
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
-
+                     
                 }
                 return response.text();
             })
-            .catch((error) => {
-                console.log('Error in Sending data', error)
-                emailjs.init('9y2-7nt7W0n40tp2k');
-                emailjs.send("service_nywgfzp", "template_5oej7kb", {
-                    subject: 'There was an Error in Sending the Form data',
-                    message: `Hello RHC.org, we regret to inform that due to technical glitch we are not able to reach the user's data to you, please contact the technical team as soon as possible, Thank you.`
-                })
-
-            })
             .then((data) => {
                 // Initialize EmailJS and send email
-                console.log(data)
+                console.log(data);
                 emailjs.init('2wXTFnidIOznuU-VN');
                 emailjs.send("service_06de9wb", "template_fymzklb", {
                     type: userType,
@@ -119,19 +110,32 @@ function submitForm() {
                     function (error) {
                         // Handle failure
                         console.error("Error sending admin notification email:", error);
-
+                        
                     }
                 );
             })
             .catch((error) => {
-                // Handle fetch or emailjs errors
+                // Handle fetch errors
                 console.error("There was an error!", error);
-
+                alert('There was a problem in sending the data ! sorry')
+                 
+                window.location.reload()
+                 
+                // Send error email
+                emailjs.init('9y2-7nt7W0n40tp2k');
+                emailjs.send("service_nywgfzp", "template_5oej7kb", {
+                    subject: 'There was an Error in Sending the Form data',
+                    message: `Hello RHC.org, we regret to inform that due to a technical glitch we are not able to reach the user's data to you, please contact the technical team as soon as possible, Thank you.`,
+                     
+                }).catch((error) => {
+                    console.error("Error sending error notification email:", error);
+                });
             });
     }
 
     return false; // Prevent default form submission
 }
+
 
 
 
