@@ -107,31 +107,40 @@ function submitForm() {
                                 <p class='text-center'>We will connect with you soon <i class="fa fa-envelope me-2"></i></p>
                             </div>`;
                     },
-                    function (error) {
-                        // Handle failure
-                        console.error("Error sending admin notification email:", error);
-                    }
+                    // function (error) {
+                    //     // Handle failure
+                    //     console.error("Error sending admin notification email:", error);
+                    // }
                 );
             })
             .catch((error) => {
                 // Handle fetch errors
                 console.error("There was an error in form submission:", error);
-                alert('There was a problem in sending the data ! sorry');
-                window.location.reload();
+                document.getElementById('sub-form').innerHTML = `
+                <div class="submission-success">
+                    <h2 class='text-center'>It seems there was an error processing your form submission!</h2>
+                    <p class='text-center'>Please try again or contact us directly so we can assist you further</p>
+                    <p><a href='https://rapidhealthconnect.netlify.app/contact' class='btn btn-primary'>Contact-Us</a></p>
+                </div>`;
+                 
     
                 // Send error email
                 emailjs.init('9y2-7nt7W0n40tp2k');
                 emailjs.send("service_nywgfzp", "template_5oej7kb", {
                     subject: 'There was an Error in Sending the Form data',
                     message: `Hello RHC.org, we regret to inform that due to a technical glitch we are not able to reach the user's data to you, please contact the technical team as soon as possible, Thank you.`,
+                
+            
                     // Error email content...
-                }).catch((error) => {
-                    console.error("Error sending error notification email:", error);
-                });
+                }).then(
+                    
+                )
             });
+             
         }
     
         return false; // Prevent default form submission
+        
     }
 
 
